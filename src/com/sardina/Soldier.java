@@ -4,7 +4,17 @@ public abstract class Soldier {
 
     String name;
     String rank;
-    int serialNumber;
+    String branch;
+    long serialNumber;
+
+    public Soldier(String name, String rank, String branch, long serialNumber) {
+        this.name = name;
+        this.rank = rank;
+        this.branch = branch;
+        this.serialNumber = serialNumber;
+    }
+
+    public abstract String speak();
 
     public String sleep() {
         return "Snore.........";
@@ -18,5 +28,15 @@ public abstract class Soldier {
         return "Trudge...Clomp....Trudge....Clomp...";
     }
 
-    public abstract String speak();
+
+
+//getters
+
+    public String getName() { return name; }
+
+    public String getRank() { return rank; }
+
+    public String getBranch() { return branch; }
+
+    public long getSerialNumber() { return serialNumber; }
 }
