@@ -1,29 +1,27 @@
 package com.sardina;
 
-public class Navy extends Soldier implements SpecialForcesFighting, ShootsGun {
+import java.util.Random;
+
+public class NavySealDiver extends Navy implements Bomb, Sidearms, Rifles {
 
 //constructor
-    public Navy(String name, String rank, String branch, long serialNumber) {
+    public NavySealDiver(String name, String rank, String branch, long serialNumber) {
         super(name, rank, branch, serialNumber);
     }
-//abstract from Soldier
-    public String speak () {
-        return "Hooyah...Navy......!!";
-    }
 
-//SpecialForcesFighting interface
-    public String vNeckChop() { return "Crushing blow to the windpipe!"; }
-    public String armToNeckChop() { return "Attack to the arm then the jugular.."; }
-    public String frontTakeDown() { return "Whoop, now you're on your back!"; }
+//Bomb interface
+    public String useBomb() {
+        Random random = new Random();
+        Integer damage = random.nextInt(100) * random.nextInt(100);
+        return "I'm a demolition's expert. My bomb just caused " + damage + " damage!";
+    }
 
 //ShootsGun interface
     public String shootRifle(){ return "Bang bang --> rifle shot.."; }
     public String shootSidearm(){ return "Pew pew --> sidearm shot.."; }
-
-    @Override
-    public String laserGun() {
-        return "The marines thought they got the coolest laser gun but they were wrong. They got our old stuff. We have the new ones that go ZZZZZZZZAAAAAPOWWWW!!!";
-    }
+//Rifles and Sidearms interface
+    public String mp5() { return "Blllltttttttttt tat tat tat...."; }
+    public String desertEagle() { return "Pow pow Pow..!"; }
 
     //toString all info
     public String toString() {
@@ -37,6 +35,11 @@ public class Navy extends Soldier implements SpecialForcesFighting, ShootsGun {
                 "And when we sleep we " + this.sleep() + ".\n" +
                 "When an " + this.getBranch() + " fights, we " + this.vNeckChop() + ",\n" +
                 "  and " + this.armToNeckChop() + ", and finish them off with a " + this.frontTakeDown() + ".\n" +
-                "I like to shoot " + this.shootSidearm() + ".";
+                "\n" +
+                this.useBomb() + ".\n" +
+                "We also like to shoot " + this.shootSidearm() + " & " + this.shootRifle() + ".\n" +
+                "But since we're special forces we also get to shoot mp5's " + this.mp5() + " & \n" +
+                "Desert eagles " + this.desertEagle() + ".";
     }
+
 }
